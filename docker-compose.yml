@@ -2,13 +2,13 @@ version: '3.8'
 
 services:
   db:
-    image: postgres:13
+    image: postgres:16
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: weather_app
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
 
   web:
     build: .

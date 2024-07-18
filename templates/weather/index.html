@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Enter City Name</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Get Weather</button>
+</form>
+<script>
+$(function() {
+    var availableCities = [
+        "Moscow",
+        "London",
+        "New York",
+        "Paris",
+        "Berlin",
+        "Orenburg"
+        // можно добавить еще города
+    ];
+    $("#id_city_name").autocomplete({
+        source: availableCities
+    });
+});
+</script>
+{% if last_search %}
+    <p>Last searched city: {{ last_search.city.name }}</p>
+{% endif %}
+<a href="{% url 'search_count_api' %}"target="_blanc">API</a>
+<a href="{% url 'admin:index' %}" target="_blanc">Admin</a>
+{% endblock %}

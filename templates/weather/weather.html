@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Weather in {{ city.name }}</h1>
+
+{% if error %}
+    <p>{{ error }}</p>
+{% else %}
+    <ul>
+        {% for time, temp in weather_data %}
+        <li>{{ time|date:"Y-m-d H:i" }}: {{ temp }}°C</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<a href="/">Go back</a>
+{% endblock %}
